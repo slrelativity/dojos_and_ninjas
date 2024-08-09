@@ -5,45 +5,39 @@ from flask_app.models.ninja_model import Ninja
 
 
 
-#@app.route('/ninjas/')
-#def user_page():
-#    ninja_list = Ninja.get_all()
-#    return render_template("ninjas.html", ninjas = ninja_list)
+
+@app.route('/ninjas/')
+def new_page1():
+    return render_template('create_ninjas.html')
 
 
 
-#@app.route('/ninjas/')
-#def new_page1():
- #   return render_template('create_ninjas.html')
-
-
-
-@app.route('/ninjas/create',methods=['POST'])
+@app.route('/ninjas/new',methods=['POST'])
 def create1():
     print(request.form)
     Ninja.save(request.form)
-    return redirect('/ninjas')
+    return redirect('/ninjas/show')
 
 
 
-@app.route('/user/edit/<int:id>')
+@app.route('/ninja/edit/<int:id>')
 def edit(id):
     data ={ 
         "id":id
     }
-    return render_template("edit_user.html",ninja=Ninja.get_one(data))
+    return render_template("ninja_user.html",ninja=Ninja.get_one(data))
 
 
 
-@app.route('/user/show/<int:id>')
+@app.route('/dojos/<int:id>')
 def show1(id):
     data ={ 
         "id":id
     }
-    return render_template("show_ninja.html",user=Ninja.get_one(data))
+    return render_template("create_dojo.html",user=Ninja.get_one(data))
 
 
-@app.route('/user/update',methods=['POST'])
+@app.route('/Ninjas/update',methods=['POST'])
 def update():
     Ninja.update(request.form)
     return redirect('/ninjas')

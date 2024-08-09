@@ -10,27 +10,27 @@ def index():
     
 
 
-@app.route('/dojos')
+@app.route('/dojos/')
 def user_page():
-  dojo_list = Dojo.get_all()
-  return render_template('create_dojos.html', dojos = dojo_list)
+  dojos_lists = Dojo.get_all()
+  return render_template('/create_dojo.html', dojos = dojos_lists)
 
 
 
-@app.route('/ninjas/new')
+@app.route('/ninjas')
 def new_page():
     return render_template("create_ninja.html")
 
 
 
-@app.route('/ninjas/create',methods=['POST'])
+@app.route('/dojos/',methods=['POST'])
 def create():
     print(request.form)
-    Ninja.save(request.form)
-    return redirect('/ninjas')
+    Dojo.save(request.form)
+    return redirect('/dojos/')
 
 
-@app.route('/ninjass/show/<int:id>')
+@app.route('/ninjas/show/<int:id>')
 def show(id):
     data ={ 
         "id":id
@@ -54,7 +54,7 @@ def show_dojos():
 #def edit(id):
  #   data ={ 
   #      "id":id
-   # }
+   #}
     #return render_template("edit_dojo.html",dojo=Dojo.get_one(data))
 
 

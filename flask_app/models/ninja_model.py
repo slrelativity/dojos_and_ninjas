@@ -17,11 +17,11 @@ class Ninja:
         """
 
         results = connectToMySQL(database).query_db(query)
-        ninjas_list = []
+        ninjas_lists = []
         for row in results:
             new_ninjas = cls(row)
-            ninjas_list.append(new_ninjas)
-        return ninjas_list
+            ninjas_lists.append(new_ninjas)
+        return ninjas_lists
     
     
     @classmethod

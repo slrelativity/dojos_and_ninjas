@@ -14,11 +14,11 @@ class Dojo:
         """
 
         results = connectToMySQL(database).query_db(query)
-        dojo_list = []
+        dojos_lists = []
         for row in results:
-            new_dojo = cls(row)
-            dojo_list.append(new_dojo)
-        return dojo_list
+            new_dojos = cls(row)
+            dojos_lists.append(new_dojos)
+        return dojos_lists
     
     
     @classmethod
